@@ -83,6 +83,7 @@
         android:text="@string/lb_addAccountBanner"
         android:textColor="@color/black"
         android:textSize="22sp"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline"

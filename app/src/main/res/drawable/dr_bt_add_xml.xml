@@ -8,6 +8,7 @@
         android:state_selected="false"/>
     <item 
         android:drawable="@drawable/bt_add_pressed" 
-        android:state_pressed="true"/>
+        android:state_pressed="true"
+        android:state_selected="true"/>
 
 </selector>
