@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/dr_bt_add.xml" value="0.179" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/dr_bt_add_xml.xml" value="0.3375" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/dr_bt_background.xml" value="0.3375" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/dr_bt_press.xml" value="0.251" />
@@ -10,7 +11,7 @@
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/test.xml" value="0.3375" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout-v21/bookkeeping_constraintlayout.xml" value="0.33" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/bookkeeping_constraintlayout.xml" value="0.33" />
+        <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/bookkeeping_constraintlayout.xml" value="0.25" />
       </map>
     </option>
   </component>
