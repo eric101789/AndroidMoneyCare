@@ -3,10 +3,13 @@ package com.example.moneycare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    final String TAG = this.getClass().getSimpleName();
     
     TextView theDate, theTime;
 
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.bookkeeping_constraintlayout);
 
 
+        Log.d(TAG, "enter onCreate()");
         uiInit();
     }
 
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         varInit();
         setListener();
+        Log.d(TAG, "enter onStart()");
     }
 
     private void setListener() {
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onStop() {
+        Log.d(TAG, "enter onStop()");
 
         releaseUiListener();
         super.onStop();
@@ -54,22 +60,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onDestroy() {
+        Log.d(TAG, "enter onDestroy()");
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
+        Log.d(TAG, "enter onPause()");
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "enter onResume()");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+        Log.d(TAG, "enter onRestart()");
     }
 
     @Override
