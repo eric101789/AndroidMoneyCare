@@ -1,4 +1,4 @@
-# MoneyCare
+## MoneyCare
 This application is used for CYCU MOOCS course "Android App Development".
 This project is created by Eric YANG, the assistant of this course in 2022 semester.
 Students should not use this project directly for homework checking.
