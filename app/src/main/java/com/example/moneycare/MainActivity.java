@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     final String TAG = this.getClass().getSimpleName();
     static int count = 0;
+    final int demoCase = 1; // 0: click to switch； 1: use Handler
 
 
     @Override
@@ -36,12 +37,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        findViewById(android.R.id.content).setOnClickListener(this);
         Log.d(TAG, "enter onStart(), #" + count);
 
-        // 使用Handler自動切換螢幕畫面
-        Message msg = myHandler.obtainMessage();    // 從Message pool裡面取一個message出來
-        // 比新建立一個有效率
-        // Ctrl+Q 查看指令文件
-        myHandler.sendMessageDelayed(msg, 500); // 0.5秒後執行
+        switch(demoCase) {
+            case 0:
+                // 找到此Activity的root View，並增加click監聽
+                (this.findViewById(android.R.id.content)).setOnClickListener(this);
+                break;
+            case 1:
+                // 使用Handler自動切換螢幕畫面
+                Message msg = myHandler.obtainMessage();    // 從Message pool裡面取一個message出來
+                                                            // 比新建立一個有效率
+                                                            // Ctrl+Q 查看指令文件
+                myHandler.sendMessageDelayed(msg, 500); // 0.5秒後執行
+
+//                var123(msg);
+                break;
+
+        }
     }
+
+//    private void var123(Message msg) {
+//        msg.what = 1;
+//    }
 
 
     @Override
