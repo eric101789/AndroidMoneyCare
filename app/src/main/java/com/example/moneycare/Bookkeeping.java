@@ -1,45 +1,62 @@
 package com.example.moneycare;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class Bookkeeping extends AppCompatActivity implements View.OnClickListener {
 
     final String TAG = this.getClass().getSimpleName();
 
+    TextView theDate, theTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.bookkeeping_constraintlayout);
 
 
         Log.d(TAG, "enter onCreate()");
+        uiInit();
     }
 
+    private void uiInit() {
+        theDate = findViewById(R.id.textView5);
+        theTime = findViewById(R.id.textView6);
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        // 找到view root然後設定click監聽
-        findViewById(android.R.id.content).setOnClickListener(this);
+
+        varInit();
+        setListener();
         Log.d(TAG, "enter onStart()");
     }
 
+    private void setListener() {
+        theDate.setOnClickListener(this);
+        theTime.setOnClickListener(this);
+    }
+
+    private void varInit() {
+    }
 
     @Override
     protected void onStop() {
         Log.d(TAG, "enter onStop()");
 
+        releaseUiListener();
         super.onStop();
     }
 
+    private void releaseUiListener() {
+        theDate.setOnClickListener(null);
+        theTime.setOnClickListener(null);
+    }
 
     @Override
     protected void onDestroy() {
@@ -67,16 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
-            case android.R.id.content:
-                startActivity(new Intent(this, Bookkeeping.class));
 
-                // 新增過場動畫
-                overridePendingTransition(android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right);
-                // 強制activity終止
-                MainActivity.this.finish();
-                break;
-        }
     }
 }
