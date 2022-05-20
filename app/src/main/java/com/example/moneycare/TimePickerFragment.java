@@ -1,23 +1,7 @@
-/*實作DatePickerDialog用來讓使用者設定日期
- * @author AJ, Yang 2020/05/25
- * @exception RuntimeException()
- *
- * 呼叫方式
- * 1. 可以輸入預設日期:
- * DialogFragment dateFragment = DatePickerFragment.newInstance(Calendar c);
- * dateFragment.show(getSupportFragmentManager(), "datePicker");
- * 2. 以目前時間為預設日期:
- * DialogFragment dateFragment = DatePickerFragment.newInstance();
- * dateFragment.show(getSupportFragmentManager(), "datePicker");
- *
- * 回傳方式:
- * 實作 OnDatePickerFragmentListener 介面，實作 OnDateSet(Calendar c)
- */
-
 package com.example.moneycare;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -27,74 +11,64 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class DatePickerFragment extends DialogFragment
-        implements DatePickerDialog.OnDateSetListener {
+public class TimePickerFragment extends DialogFragment
+        implements TimePickerDialog.OnTimeSetListener {
+    private OnTimePickerFragmentListener mListener;
     private static final String ARG_PARAM1 = "param1";
-    private OnDatePickerFragmentListener mListener;
     Calendar c;
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current date as the default in picker
-//        final Calendar c = Calendar.getInstance();
         c = Calendar.getInstance();
         Bundle args = getArguments();
         if (args !=null) {
             c.setTimeInMillis(args.getLong(ARG_PARAM1));
         }
-        c.setTimeInMillis(getArguments().getLong(ARG_PARAM1));
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
 
-        // create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new TimePickerDialog(getActivity(),this, hour, minute, true);
     }
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MONTH, minute);
 
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the year
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, day);
 
         if (mListener !=null) {
-            mListener.onDateSet(c);
+            mListener.onTimeSet(c);
         }
     }
 
-    public static DatePickerFragment newInstance(Calendar c) {
-        DatePickerFragment fragment = new DatePickerFragment();
+    public static TimePickerFragment newInstance(Calendar c) {
+        TimePickerFragment fragment = new TimePickerFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_PARAM1, c.getTimeInMillis());
-
         fragment.setArguments(args);
         return fragment;
     }
-
-    public static DatePickerFragment newInstance() {
-        DatePickerFragment fragment = new DatePickerFragment();
+    public static TimePickerFragment newInstance() {
+        TimePickerFragment fragment = new TimePickerFragment();
 
         return fragment;
     }
 
-    public interface OnDatePickerFragmentListener {
+    public interface OnTimePickerFragmentListener {
         //TODO: Update argument type and name
-        void onDateSet(Calendar c);
+        void onTimeSet(Calendar c);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnDatePickerFragmentListener) {
-            mListener = (OnDatePickerFragmentListener) context;
+        if (context instanceof TimePickerFragment.OnTimePickerFragmentListener) {
+            mListener = (TimePickerFragment.OnTimePickerFragmentListener) context;
 
         }else {
             throw new RuntimeException(context.toString()
-                    + "must implement OnDatePickerFragmentListener");
+                    + "must implement OnTimePickerFragmentListener");
         }
     }
 
@@ -103,14 +77,15 @@ public class DatePickerFragment extends DialogFragment
         super.onDetach();
         mListener = null;
     }
+
 }
 
 ///**
 // * A simple {@link Fragment} subclass.
-// * Use the {@link DatePickerFragment#newInstance} factory method to
+// * Use the {@link TimePickerFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-//public class DatePickerFragment extends Fragment {
+//public class TimePickerFragment extends Fragment {
 //
 //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,7 +96,7 @@ public class DatePickerFragment extends DialogFragment
 //    private String mParam1;
 //    private String mParam2;
 //
-//    public DatePickerFragment() {
+//    public TimePickerFragment() {
 //        // Required empty public constructor
 //    }
 //
@@ -131,11 +106,11 @@ public class DatePickerFragment extends DialogFragment
 //     *
 //     * @param param1 Parameter 1.
 //     * @param param2 Parameter 2.
-//     * @return A new instance of fragment DatePickerFragment.
+//     * @return A new instance of fragment TimePickerFragment.
 //     */
 //    // TODO: Rename and change types and number of parameters
-//    public static DatePickerFragment newInstance(String param1, String param2) {
-//        DatePickerFragment fragment = new DatePickerFragment();
+//    public static TimePickerFragment newInstance(String param1, String param2) {
+//        TimePickerFragment fragment = new TimePickerFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -156,6 +131,6 @@ public class DatePickerFragment extends DialogFragment
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //                             Bundle savedInstanceState) {
 //        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_date_picker, container, false);
+//        return inflater.inflate(R.layout.fragment_time_picker, container, false);
 //    }
 //}
