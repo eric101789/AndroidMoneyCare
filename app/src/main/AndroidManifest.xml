@@ -11,12 +11,12 @@
         android:theme="@style/Theme.MoneyCare" >
 
         <activity
-            android:name=".MainActivity"
+            android:name=".TabbedActivity"
             android:exported="false"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/Theme.MoneyCare.NoActionBar" />
         <activity
-            android:name=".TabbedActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MoneyCare.NoActionBar" >
 

@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 overridePendingTransition(android.R.anim.slide_in_left,
                         android.R.anim.slide_out_right);
                 // 強制activity終止
-//                MainActivity.this.finish();
+                MainActivity.this.finish();
                 break;
         }
     }
