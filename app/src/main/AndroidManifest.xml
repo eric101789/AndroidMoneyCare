@@ -23,20 +23,6 @@
         <activity android:name=".Bookkeeping"
             android:theme="@style/Theme.MoneyCare.NoActionBar" />
         <activity android:name=".CuteDog" />
-        <activity
-            android:name=".MainActivity2"
-
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.MoneyCare.NoActionBar" >
-<!--            android:parentActivityName=".CuteDog"-->
-<!--            android:exported="true"-->
-
-
-<!--            <meta-data-->
-<!--                android:name="android.support.PARENT_ACTIVITY"-->
-<!--                android:value=".CuteDog" />-->
-
-        </activity>
     </application>
 
 </manifest>
