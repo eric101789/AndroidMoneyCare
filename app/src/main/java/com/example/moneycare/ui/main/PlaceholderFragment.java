@@ -1,6 +1,7 @@
 package com.example.moneycare.ui.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.example.moneycare.databinding.FragmentTabbedBinding;
  */
 public class PlaceholderFragment extends Fragment {
 
+    final static String TAG = "TabbedActivity";
+
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
@@ -30,6 +33,7 @@ public class PlaceholderFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
+        Log.d(TAG, "enter Fragment's newInstance()");
         return fragment;
     }
 
@@ -52,6 +56,8 @@ public class PlaceholderFragment extends Fragment {
         binding = FragmentTabbedBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        int position = getArguments().getInt(ARG_SECTION_NUMBER);
+
         final TextView textView = binding.sectionLabel;
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -59,7 +65,24 @@ public class PlaceholderFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        Log.d(TAG, "enter " + position + "Fragment's onCreateView()");
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        int position = getArguments().getInt(ARG_SECTION_NUMBER);
+        Log.d(TAG, "enter " + position + "Fragment's onStart()");
+    }
+
+    @Override
+    public void onStop() {
+        int position = getArguments().getInt(ARG_SECTION_NUMBER);
+
+        Log.d(TAG, "enter " + position + "Fragment's onStop()");
+        super.onStop();
     }
 
     @Override
