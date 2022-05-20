@@ -69,7 +69,10 @@ public class Bookkeeping extends AppCompatActivity implements View.OnClickListen
     }
 
     private void varInit() {
-        c = Calendar.getInstance();
+//        c = Calendar.getInstance();
+        if(c == null) {
+            c = Calendar.getInstance();
+        }
 
         theDate.setText(df2.format(c.getTime()));
         theTime.setText(df.format(c.getTime()));

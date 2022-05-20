@@ -30,7 +30,14 @@ public class TimePickerFragment extends DialogFragment
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(),this, hour, minute, true);
+        return new TimePickerDialog(getActivity(),this, hour, minute, true) {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                super.onTimeChanged(view, hourOfDay, minute);
+                onTimeSet(view, hourOfDay, minute);
+                this.dismiss();
+            }
+        };
     }
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
