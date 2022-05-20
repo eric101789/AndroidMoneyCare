@@ -12,7 +12,9 @@
         <entry key="..\:/AndroidProject/AndroidMoneyCare/app/src/main/res/layout/content_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/drawable/dr_bt_press.xml" value="0.251" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
+        <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/activity_tabbed.xml" value="0.24947916666666667" />
         <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/bookkeeping_constraintlayout.xml" value="0.25" />
+        <entry key="..\:/Project/AndroidProject/MoneyCare/app/src/main/res/layout/fragment_tabbed.xml" value="0.24947916666666667" />
       </map>
     </option>
   </component>

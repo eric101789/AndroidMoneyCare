@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.moneycare">
+    package="com.example.moneycare" >
 
     <application
         android:allowBackup="true"
@@ -8,21 +8,32 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MoneyCare">
-        <activity android:name=".MainActivity"
+        android:theme="@style/Theme.MoneyCare" >
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_tabbed"
+            android:theme="@style/Theme.MoneyCare.NoActionBar" />
+        <activity
+            android:name=".TabbedActivity"
             android:exported="true"
             android:theme="@style/Theme.MoneyCare.NoActionBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <!-- 下面這行是為了要符合Google政策和處理Warning訊息 -->
-            <action android:name="android.intent.action.VIEW" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- 下面這行是為了要符合Google政策和處理Warning訊息 -->
+                <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".Bookkeeping"
+        <activity
+            android:name=".Bookkeeping"
+            android:exported="false"
             android:theme="@style/Theme.MoneyCare.NoActionBar" />
-        <activity android:name=".CuteDog" />
+        <activity
+            android:name=".CuteDog"
+            android:exported="false"
+            android:theme="@style/Theme.MoneyCare.NoActionBar" />
     </application>
 
 </manifest>
