@@ -18,7 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class Bookkeeping extends AppCompatActivity implements View.OnClickListener {
+public class Bookkeeping extends AppCompatActivity implements View.OnClickListener,
+        DatePickerFragment.OnDatePickerFragmentListener {
 
     final String TAG = this.getClass().getSimpleName();
     static int count = 0;
@@ -125,18 +126,21 @@ public class Bookkeeping extends AppCompatActivity implements View.OnClickListen
 
             case R.id.textView5:
                 //設定日期
-//                c.set(Calendar.YEAR, 2017);
-//                DialogFragment dateFragment = DatePickerFragment.newInstance(c);
-//                dateFragment.show(getSupportFragmentManager(), "datePicker");
-                new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        c.set(Calendar.YEAR, year);
-                        c.set(Calendar.MONTH, month);
-                        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        theDate.setText(df2.format(c.getTime()));
-                    }
-                },c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+                c.set(Calendar.YEAR, 2021);
+
+                DialogFragment dateFragment = DatePickerFragment.newInstance(c);
+                dateFragment.show(getSupportFragmentManager(), "datePicker");
+
+//                new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                        c.set(Calendar.YEAR, year);
+//                        c.set(Calendar.MONTH, month);
+//                        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//                        theDate.setText(df2.format(c.getTime()));
+//                    }
+//                },c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+
                 break;
 
             case R.id.textView6:
@@ -155,5 +159,11 @@ public class Bookkeeping extends AppCompatActivity implements View.OnClickListen
 
 
         }
+    }
+
+    @Override
+    public void onDateSet(Calendar c) {
+        this.c.setTimeInMillis(c.getTimeInMillis());
+        theDate.setText(df2.format(c.getTime()));
     }
 }
